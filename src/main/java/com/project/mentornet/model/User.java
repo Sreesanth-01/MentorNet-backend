@@ -25,8 +25,8 @@ public class User {
 
     private String name;
     private String email;
-    private String mobile;
     private String college;
+    private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
     @OneToOne
