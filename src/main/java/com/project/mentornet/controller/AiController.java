@@ -1,0 +1,26 @@
+package com.project.mentornet.controller;
+
+import com.project.mentornet.service.AiService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api")
+public class AiController {
+
+    private final AiService aiService;
+
+    public AiController(AiService aiService) {
+        this.aiService = aiService;
+    }
+
+    @PostMapping("/ask")
+    public String askAI(@RequestBody Map<String, String> request) {
+
+        String doubt = request.get("doubt");
+        String domain = request.get("domain");
+
+        return aiService.answerDoubt(doubt, domain);
+    }
+}
