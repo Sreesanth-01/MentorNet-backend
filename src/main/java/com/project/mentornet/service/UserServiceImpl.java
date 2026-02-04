@@ -1,5 +1,26 @@
 package com.project.mentornet.service;
 
-public class UserServiceImpl {
-    
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.project.mentornet.model.Role;
+
+import com.project.mentornet.model.CareerGoal;
+import com.project.mentornet.model.Users;
+import com.project.mentornet.repository.UserRepo;
+
+@Service
+public class UserServiceImpl implements UserService{
+    private final UserRepo userRepo;
+
+    public UserServiceImpl(UserRepo userRepo){
+        this.userRepo=userRepo;
+    }
+
+    @Override
+    public List<Users> findAlignedSeniors(Role role, CareerGoal careerGoal){
+        List<Users> AllignedSeniors = userRepo.findAllByRoleAndCareerGoal(role,careerGoal);
+        return AllignedSeniors;
+    }
 }

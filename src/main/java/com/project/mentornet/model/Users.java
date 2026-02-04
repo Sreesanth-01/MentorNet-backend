@@ -1,14 +1,13 @@
 package com.project.mentornet.model;
 
-import java.util.List;
-
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,15 +18,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Skills {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int skill_id;
-    @ElementCollection
-    @CollectionTable(
-    name = "skills_programming_languages",
-    joinColumns = @JoinColumn(name = "skill_id"))
-    private List<String> programmingLanguages;
-    private int projectsDone;
-    private int problemsSolved;
+    private int user_id;
+
+    private String name;
+    private String email;
+    private String college;
+    private String password;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    @Enumerated(EnumType.STRING)
+    private CareerGoal careerGoal;
+    @OneToOne
+    @JoinColumn(name = "skill_id")
+    private Skills skills;
 }
