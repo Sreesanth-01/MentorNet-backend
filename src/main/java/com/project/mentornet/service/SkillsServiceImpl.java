@@ -1,5 +1,8 @@
 package com.project.mentornet.service;
 
-public class SkillsServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class SkillsServiceImpl implements SkillsService {
     
 }

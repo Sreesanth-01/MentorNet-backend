@@ -1,11 +1,14 @@
 package com.project.mentornet.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,18 +19,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Users {
+@Table(name = "mentorshipstats")
+public class MentorshipStats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    private long id;
 
-    private String name;
-    private String email;
-    private String college;
-    private String password;
-    private String role;
-    private String careerGoal;
     @OneToOne
-    @JoinColumn(name = "skill_id")
-    private Skills skills;
+    @JoinColumn(name = "mentor_id")
+    private Users mentor;
+
+    private int totalPoints;
+    private int currentStreak;
+    private int longestStreak;
+
+    private LocalDate lastActiveDate;
 }

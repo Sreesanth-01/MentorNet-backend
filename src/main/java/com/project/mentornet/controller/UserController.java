@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.mentornet.model.CareerGoal;
@@ -23,10 +24,10 @@ public class UserController {
     }
 
     @GetMapping("/alignedseniors")
-    public ResponseEntity<List<Users>> getAlignedUsers(CareerGoal careerGoal){
-        List<Users> list = userService.findAlignedSeniors(Role.Senior, careerGoal);
+    public ResponseEntity<?> getAlignedUsers(@RequestParam(defaultValue = "SOFTWARE_DEVELOPMENT") String careerGoal){
+        List<Users> list = userService.findAlignedSeniors("Senior", careerGoal);
         if(list.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("No aligned seniors found",HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(list,HttpStatus.OK);
     }
