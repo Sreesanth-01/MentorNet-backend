@@ -14,34 +14,34 @@
 // public class JwtUtil {
 //     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-//     private final long Expiration_Time = 1000*60*60*24; //For 24 hours
+//     private final long Expiration_Time = 1000 * 60 * 60 * 24; // For 24 hours
 
-//     public String generateToken(String email){
+//     public String generateToken(String email) {
 
 //         return Jwts.builder()
-//                     .setSubject(email)
-//                     .setIssuedAt(new Date())
-//                     .setExpiration(new Date(System.currentTimeMillis()+Expiration_Time))
-//                     .signWith(key)
-//                     .compact();
+//                 .setSubject(email)
+//                 .setIssuedAt(new Date())
+//                 .setExpiration(new Date(System.currentTimeMillis() + Expiration_Time))
+//                 .signWith(key)
+//                 .compact();
 //     }
 
-//     public String extractEmail(String token){
+//     public String extractEmail(String token) {
 
 //         return Jwts.parserBuilder()
-//                     .setSigningKey(key)
-//                     .build()
-//                     .parseClaimsJws(token)
-//                     .getBody()
-//                     .getSubject();
-//     }
-
-//     public boolean validateToken(String token){
-//         try {
-//             Jwts.parserBuilder()
 //                 .setSigningKey(key)
 //                 .build()
-//                 .parseClaimsJws(token);
+//                 .parseClaimsJws(token)
+//                 .getBody()
+//                 .getSubject();
+//     }
+
+//     public boolean validateToken(String token) {
+//         try {
+//             Jwts.parserBuilder()
+//                     .setSigningKey(key)
+//                     .build()
+//                     .parseClaimsJws(token);
 
 //             return true;
 //         } catch (JwtException | IllegalArgumentException e) {

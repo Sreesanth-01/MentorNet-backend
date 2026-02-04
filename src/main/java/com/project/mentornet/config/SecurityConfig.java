@@ -16,12 +16,11 @@
 
 // import com.project.mentornet.security.JwtAuthenticationFilter;
 
-
 // @Configuration
 // public class SecurityConfig {
 //     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-//     public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter){
+//     public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
 //         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
 //     }
 
@@ -29,26 +28,23 @@
 //     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 //         http
-//         .cors(Customizer.withDefaults())
-//             .csrf(csrf -> csrf.disable())
-//              .sessionManagement(session ->
-//                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//             )
-//             .authorizeHttpRequests(auth -> auth
-//                 .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-//                 .requestMatchers(HttpMethod.GET, "/api/auth/**").permitAll()
-//                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-//                 .requestMatchers("/api/health/**").permitAll()
-//                 .requestMatchers("/error").permitAll()
-//                 .anyRequest().authenticated()
-//             )
-//             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+//                 .cors(Customizer.withDefaults())
+//                 .csrf(csrf -> csrf.disable())
+//                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                 .authorizeHttpRequests(auth -> auth
+//                         .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+//                         .requestMatchers(HttpMethod.GET, "/api/auth/**").permitAll()
+//                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//                         .requestMatchers("/api/health/**").permitAll()
+//                         .requestMatchers("/error").permitAll()
+//                         .anyRequest().permitAll())
+//                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 //         return http.build();
 //     }
 
 //     @Bean
-//     public CorsConfigurationSource corsConfigurationSource() {  //for allowing frontend integration
+//     public CorsConfigurationSource corsConfigurationSource() { // for allowing frontend integration
 //         CorsConfiguration config = new CorsConfiguration();
 
 //         config.setAllowedOriginPatterns(List.of("*"));

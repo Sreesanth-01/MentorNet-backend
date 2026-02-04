@@ -18,23 +18,30 @@
 // public class JwtAuthenticationFilter extends OncePerRequestFilter {
 //     private final JwtUtil jwtUtil;
 
-//     public JwtAuthenticationFilter(JwtUtil jwtUtil){
+//     public JwtAuthenticationFilter(JwtUtil jwtUtil) {
 //         this.jwtUtil = jwtUtil;
 //     }
+
 //     @Override
-//     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,FilterChain filterChain) throws ServletException,IOException{
-        
+//     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+//             throws ServletException, IOException {
+
 //         String authHeader = request.getHeader("Authorization");
-//         if(authHeader!=null && authHeader.startsWith("Bearer "))
-//         {
+//         if (authHeader != null && authHeader.startsWith("Bearer ")) {
 //             String token = authHeader.substring(7);
 
-//             if(jwtUtil.validateToken(token)){
+//             if (jwtUtil.validateToken(token)) {
 //                 String email = jwtUtil.extractEmail(token);
-                
-//                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(email,null,List.of()); //email,password(already authenticated),role(later)
 
-//                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)); //Not mandatory but good practice.(sets Ip address and other details if needed)
+//                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(email,
+//                         null, List.of()); // email,password(already authenticated),role(later)
+
+//                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)); // Not mandatory
+//                                                                                                        // but good
+//                                                                                                        // practice.(sets
+//                                                                                                        // Ip address and
+//                                                                                                        // other details
+//                                                                                                        // if needed)
 
 //                 SecurityContextHolder.getContext().setAuthentication(authentication);
 //             }
@@ -42,6 +49,3 @@
 //         filterChain.doFilter(request, response);
 //     }
 // }
-
-
-        
